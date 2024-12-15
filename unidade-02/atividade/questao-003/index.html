@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 003</title>
+
+    <style>
+      #app {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Exibindo os números pares de 10 a 200</h1>
+
+    <!-- Div onde os números serão exibidos -->
+    <div id="app"></div>
+
+    <script>
+      // Captura o elemento 'app' onde os números serão exibidos
+      const app = document.querySelector("#app");
+
+      // Laço de repetição (loop) que executa de 10 até 200, incrementando de 2 em 2
+      for (let i = 10; i <= 200; i += 2) {
+        // Cria um novo elemento de parágrafo (<p>) para cada número
+        const paragrafo = document.createElement("p");
+
+        // Define o texto dentro do parágrafo como o número atual (i)
+        paragrafo.textContent = i;
+
+        // Adiciona o parágrafo criado dentro da div de saída (app)
+        app.appendChild(paragrafo);
+      }
+    </script>
+  </body>
+</html>
