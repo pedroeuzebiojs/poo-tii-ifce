@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 017</title>
+
+    <style>
+      form fieldset legend {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Desenha Pirâmide de Asteriscos</legend>
+
+        <div class="input-wrapper">
+          <label for="number">Digite a quantidade de linhas: </label>
+          <input type="number" id="linhas" name="linhas" min="1" />
+        </div>
+
+        <br />
+
+        <button type="submit">Desenhar</button>
+      </fieldset>
+    </form>
+
+    <!-- Div onde a resposta será exibida -->
+    <div id="app"></div>
+
+    <script>
+      // Captura o elemento 'app' onde a pirâmide será exibida
+      const app = document.querySelector("#app");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Limpa o conteúdo anterior (Se houver)
+        app.innerHTML = "";
+
+        // Captura o valor digitado pelo usuário
+        const linhas = parseInt(document.querySelector("#linhas").value);
+
+        // Garante que o número de linhas é válido
+        if (isNaN(linhas) || linhas < 1) {
+          app.textContent =
+            "Por favor, insira um número de linhas válido (mínimo de 1).";
+          return;
+        }
+
+        // Função para desenhar a pirâmide de asteriscos
+        function desenhaPiramide(number) {
+          let piramide = "";
+          for (let i = 1; i <= number; i++) {
+            piramide += "*".repeat(i) + "<br>"; // Adiciona i asteriscos em cada linha
+          }
+          return piramide;
+        }
+
+        // Exibe a pirâmide na tela
+        app.innerHTML = desenhaPiramide(linhas);
+      });
+    </script>
+  </body>
+</html>
