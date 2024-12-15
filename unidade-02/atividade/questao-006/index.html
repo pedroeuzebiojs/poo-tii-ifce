@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Questão 005</title>
+    <title>Questão 006</title>
 
     <style>
       form fieldset legend {
@@ -15,7 +15,7 @@
   <body>
     <form>
       <fieldset>
-        <legend>Verifica se um número é primo</legend>
+        <legend>Verifica se um número é perfeito</legend>
 
         <div class="input-wrapper">
           <label for="number">Digite um número: </label>
@@ -46,33 +46,33 @@
         const number = parseInt(document.querySelector("#number").value);
 
         // Garante que o número é válido
-        if (isNaN(number) || number <= 1) {
-          app.textContent = "Por favor, insira um número inteiro maior que 1.";
+        if (isNaN(number) || number <= 0) {
+          app.textContent = "Por favor, insira um número inteiro positivo.";
           return;
         }
 
-        // Função para verificar se o número é primo
-        function verificaSeONumeroEPrimo(n) {
-          if (n <= 1) return false;
-          if (n === 2) return true; // 2 é o único número par que é primo
-          if (n % 2 === 0) return false; // Elimina todos os pares maiores que 2
+        // Função para verificar se o número é perfeito
+        function verificaSeONumeroEPerfeito(number) {
+          let somaDivisores = 0;
 
-          // Verifica divisores de 3 até a raiz quadrada de n
-          for (let i = 3; i <= Math.sqrt(n); i += 2) {
-            if (n % i === 0) {
-              return false;
+          // Laço para encontrar os divisores de n (excluindo ele mesmo)
+          for (let i = 1; i < number; i++) {
+            if (number % i === 0) {
+              somaDivisores += i; // Soma o divisor
             }
           }
-          return true;
+
+          // Verifica se a soma dos divisores é igual ao próprio número
+          return somaDivisores === number;
         }
 
-        // Verifica se o número digitado é primo
-        const resultado = verificaSeONumeroEPrimo(number);
+        // Verifica se o número digitado é perfeito
+        const resultado = verificaSeONumeroEPerfeito(number);
 
         // Exibe o resultado na tela
         app.textContent = resultado
-          ? `${number} é um número primo!`
-          : `${number} não é um número primo.`;
+          ? `${number} é um número perfeito!`
+          : `${number} não é um número perfeito.`;
       });
     </script>
   </body>
