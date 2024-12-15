@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 004</title>
+
+    <style>
+      form fieldset legend {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Exibindo os números ímpares entre dois números</legend>
+
+        <div class="input-wrapper">
+          <label for="number-1">Digite o primeiro número: </label>
+          <input type="number" id="number-1" name="number-1" />
+        </div>
+
+        <br />
+
+        <div class="input-wrapper">
+          <label for="number-2">Digite o segundo número:</label>
+          <input type="number" id="number-2" name="number-2" />
+        </div>
+
+        <br />
+
+        <button type="submit">Exibir Números Ímpares</button>
+      </fieldset>
+    </form>
+
+    <!-- Div onde os números serão exibidos -->
+    <div id="app"></div>
+
+    <script>
+      // Captura o elemento 'app' onde os números serão exibidos
+      const app = document.querySelector("#app");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Limpa o conteúdo anterior (Se houver)
+        app.innerHTML = "";
+
+        // Captura os valores digitados pelo usuário
+        const number1 = parseInt(document.querySelector("#number-1").value);
+        const number2 = parseInt(document.querySelector("#number-2").value);
+
+        // Garante que os números são válidos
+        if (isNaN(number1) || isNaN(number2)) {
+          app.textContent = "Por favor, insira dois números válidos.";
+          return;
+        }
+
+        // Define o intervalo corretamente, garantindo que o menor valor seja o início
+        const inicio = Math.min(number1, number2);
+        const fim = Math.max(number1, number2);
+
+        // Laço de repetição (loop) para percorrer os números entre 'inicio' e 'fim'
+        for (let i = inicio; i <= fim; i++) {
+          // Verifica se o número é ímpar (resto da divisão por 2 é diferente de 0)
+          if (i % 2 !== 0) {
+            // Cria um novo elemento de parágrafo (<p>) para cada número
+            const paragrafo = document.createElement("p");
+
+            // Define o texto dentro do parágrafo como o número atual (i)
+            paragrafo.textContent = i;
+
+            // Adiciona o parágrafo criado dentro da div de saída (app)
+            app.appendChild(paragrafo);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
