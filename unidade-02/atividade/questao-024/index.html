@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 024</title>
+
+    <style>
+      form fieldset legend {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>
+          Atribui valor 0 aos elementos negativos de um vetor de 10 posições
+        </legend>
+
+        <button type="submit">Executar</button>
+      </fieldset>
+    </form>
+
+    <div id="app"></div>
+
+    <script>
+      const app = document.querySelector("#app");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        let vetor = [12, -25, 47, -30, 58, -60, 22, -89, 17, 40];
+        vetor = vetor.map((num) => (num < 0 ? 0 : num));
+        app.innerHTML += `<p>Vetor após substituir valores negativos por 0: [${vetor.join(
+          ", "
+        )}]</p>`;
+      });
+    </script>
+  </body>
+</html>
