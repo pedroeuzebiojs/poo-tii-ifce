@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 019</title>
+
+    <style>
+      form fieldset legend {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Soma de Valores de um Vetor</legend>
+
+        <label for="valoresVetor"
+          >Digite 12 números para o vetor (separados por vírgula):</label
+        >
+        <input type="text" id="valoresVetor" name="valoresVetor" />
+
+        <br /><br />
+
+        <label for="posicaoX">Digite a posição X (0 a 11):</label>
+        <input type="number" id="posicaoX" name="posicaoX" min="0" max="11" />
+
+        <br /><br />
+
+        <label for="posicaoY">Digite a posição Y (0 a 11):</label>
+        <input type="number" id="posicaoY" name="posicaoY" min="0" max="11" />
+
+        <br /><br />
+
+        <button type="submit">Calcular Soma</button>
+      </fieldset>
+    </form>
+
+    <!-- Div onde o resultado será exibido -->
+    <div id="app"></div>
+
+    <script>
+      // Captura o elemento 'app' onde o resultado será exibido
+      const app = document.querySelector("#app");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Limpa o conteúdo anterior (se houver)
+        app.innerHTML = "";
+
+        // Captura os valores do vetor e as posições X e Y
+        const vetor = document
+          .querySelector("#valoresVetor")
+          .value.split(",")
+          .map(Number);
+        const posicaoX = parseInt(document.querySelector("#posicaoX").value);
+        const posicaoY = parseInt(document.querySelector("#posicaoY").value);
+
+        // Verifica se o vetor tem 12 posições e se X e Y estão no intervalo correto
+        if (
+          vetor.length !== 12 ||
+          isNaN(posicaoX) ||
+          isNaN(posicaoY) ||
+          posicaoX < 0 ||
+          posicaoX > 11 ||
+          posicaoY < 0 ||
+          posicaoY > 11
+        ) {
+          app.textContent =
+            "Por favor, insira 12 números válidos para o vetor e posições X e Y de 0 a 11.";
+          return;
+        }
+
+        // Calcula a soma dos valores nas posições X e Y
+        const soma = vetor[posicaoX] + vetor[posicaoY];
+
+        // Exibe o resultado na tela
+        app.innerHTML = `
+                <p><strong>Vetor:</strong> [${vetor.join(", ")}]</p>
+                <p><strong>Posição X:</strong> ${posicaoX} (Valor: ${
+          vetor[posicaoX]
+        })</p>
+                <p><strong>Posição Y:</strong> ${posicaoY} (Valor: ${
+          vetor[posicaoY]
+        })</p>
+                <p><strong>Soma de X e Y:</strong> ${soma}</p>
+            `;
+      });
+    </script>
+  </body>
+</html>
