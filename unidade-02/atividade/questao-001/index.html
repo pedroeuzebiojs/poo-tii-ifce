@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 001</title>
+  </head>
+  <body>
+    <h1>Exibindo o número 100 dez vezes</h1>
+
+    <!-- Div onde os números serão exibidos -->
+    <div id="app"></div>
+
+    <script>
+      // Captura o elemento 'app' onde os números serão exibidos
+      const app = document.querySelector("#app");
+
+      // Laço de repetição (loop) que executa 10 vezes
+      for (let i = 0; i < 10; i++) {
+        // Cria um novo elemento de parágrafo (<p>) para cada número
+        const paragrafo = document.createElement("p");
+
+        // Define o texto dentro do parágrafo como "100"
+        paragrafo.textContent = "100";
+
+        // Adiciona o parágrafo criado dentro da div de saída (app)
+        app.appendChild(paragrafo);
+      }
+    </script>
+  </body>
+</html>
