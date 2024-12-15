@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Questão 021</title>
+    <title>Questão 022</title>
 
     <style>
       form fieldset legend {
@@ -15,9 +15,7 @@
   <body>
     <form>
       <fieldset>
-        <legend>
-          Troca os 3 primeiros valores pelos 3 últimos em um vetor de 6 posições
-        </legend>
+        <legend>Busca de valor X em vetor de 10 posições</legend>
 
         <button type="submit">Executar</button>
       </fieldset>
@@ -32,16 +30,14 @@
       form.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        let vetor1 = [1, 2, 3, 4, 5, 6];
-        [vetor1[0], vetor1[1], vetor1[2], vetor1[3], vetor1[4], vetor1[5]] = [
-          vetor1[3],
-          vetor1[4],
-          vetor1[5],
-          vetor1[0],
-          vetor1[1],
-          vetor1[2],
-        ];
-        app.innerHTML += `<p>Vetor após a troca: [${vetor1.join(", ")}]</p>`;
+        const vetor2 = [12, 25, 47, 30, 58, 60, 22, 89, 17, 40];
+        const x = 30;
+        const posicaoX = vetor2.indexOf(x);
+        const mensagem =
+          posicaoX !== -1
+            ? `O valor ${x} foi encontrado na posição ${posicaoX}.`
+            : "O valor não foi encontrado no vetor.";
+        app.innerHTML += `<p>${mensagem}</p>`;
       });
     </script>
   </body>
