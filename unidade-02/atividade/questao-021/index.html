@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 021</title>
+
+    <style>
+      form fieldset legend {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>
+          Troca os 3 primeiros valores pelos 3 últimos em um vetor de 6 posições
+        </legend>
+
+        <button type="submit">Executar</button>
+      </fieldset>
+    </form>
+
+    <div id="app"></div>
+
+    <script>
+      const app = document.querySelector("#app");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        let vetor1 = [1, 2, 3, 4, 5, 6];
+        [vetor1[0], vetor1[1], vetor1[2], vetor1[3], vetor1[4], vetor1[5]] = [
+          vetor1[3],
+          vetor1[4],
+          vetor1[5],
+          vetor1[0],
+          vetor1[1],
+          vetor1[2],
+        ];
+        app.innerHTML += `<p>1. Vetor após a troca: [${vetor1.join(", ")}]</p>`;
+      });
+    </script>
+  </body>
+</html>
