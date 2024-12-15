@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 020</title>
+
+    <style>
+      form fieldset legend {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Vetor de Números Ímpares</legend>
+
+        <button type="submit">Gerar Vetor</button>
+      </fieldset>
+    </form>
+
+    <!-- Div onde o resultado será exibido -->
+    <div id="app"></div>
+
+    <script>
+      // Captura o botão e a div de saída
+      const app = document.querySelector("#app");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Limpa o conteúdo anterior (se houver)
+        app.innerHTML = "";
+
+        // Declara o vetor de 5 posições e o preenche com os 10 primeiros números ímpares
+        const vetor = [];
+        let numeroImpar = 1; // Começamos com o primeiro número ímpar
+
+        while (vetor.length < 5) {
+          vetor.push(numeroImpar); // Adiciona o número ímpar ao vetor
+          numeroImpar += 2; // O próximo ímpar é o atual + 2
+        }
+
+        // Exibe o vetor na tela
+        app.innerHTML = `
+                <p><strong>Vetor de 5 posições preenchido com números ímpares:</strong> [${vetor.join(
+                  ", "
+                )}]</p>
+            `;
+      });
+    </script>
+  </body>
+</html>
