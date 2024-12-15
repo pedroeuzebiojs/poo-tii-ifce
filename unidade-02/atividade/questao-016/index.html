@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 016</title>
+  </head>
+  <body>
+    <!-- Div onde as tabuadas serão exibidas -->
+    <div id="app"></div>
+
+    <script>
+      // Captura o elemento 'output' onde a resposta será exibida
+      const app = document.querySelector("#app");
+
+      function exibeTabuadas() {
+        let todasTabuadas = "";
+        for (let n = 1; n <= 10; n++) {
+          todasTabuadas += `<h2>Tabuada do ${n}</h2>`;
+          for (let i = 1; i <= 10; i++) {
+            todasTabuadas += `${n} x ${i} = ${n * i}<br>`; // Cria a string da tabuada
+          }
+          todasTabuadas += "<br>"; // Adiciona uma quebra de linha entre as tabuadas
+        }
+        return todasTabuadas;
+      }
+
+      // Exibe todas as tabuadas na tela
+      app.innerHTML = exibeTabuadas();
+    </script>
+  </body>
+</html>
