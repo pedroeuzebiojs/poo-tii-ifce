@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Questão 022</title>
+    <title>Questão 023</title>
 
     <style>
       form fieldset legend {
@@ -15,7 +15,9 @@
   <body>
     <form>
       <fieldset>
-        <legend>Busca de valor X em vetor de 10 posições</legend>
+        <legend>
+          Conta quantos valores pares há em um vetor de 10 posições
+        </legend>
 
         <button type="submit">Executar</button>
       </fieldset>
@@ -31,13 +33,8 @@
         event.preventDefault();
 
         const vetor = [12, 25, 47, 30, 58, 60, 22, 89, 17, 40];
-        const x = 30;
-        const posicaoX = vetor.indexOf(x);
-        const mensagem =
-          posicaoX !== -1
-            ? `O valor ${x} foi encontrado na posição ${posicaoX}.`
-            : "O valor não foi encontrado no vetor.";
-        app.innerHTML += `<p>${mensagem}</p>`;
+        const pares = vetor.filter((num) => num % 2 === 0).length;
+        app.innerHTML += `<p>O vetor possui ${pares} valores pares.</p>`;
       });
     </script>
   </body>
