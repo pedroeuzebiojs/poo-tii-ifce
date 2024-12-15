@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 018</title>
+
+    <style>
+      form fieldset legend {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Operações com Vetores</legend>
+
+        <div class="input-wrapper">
+          <label for="vetorA"
+            >Digite os 3 números do vetor A (separados por vírgula):</label
+          >
+          <input type="text" id="vetorA" name="vetorA" />
+        </div>
+
+        <br />
+
+        <div class="input-wrapper">
+          <label for="vetorB"
+            >Digite os 3 números do vetor B (separados por vírgula):</label
+          >
+          <input type="text" id="vetorB" name="vetorB" />
+        </div>
+
+        <br />
+
+        <button type="submit">Calcular</button>
+      </fieldset>
+    </form>
+
+    <!-- Div onde os números serão exibidos -->
+    <div id="app"></div>
+
+    <script>
+      // Captura o elemento 'output' onde o resultado será exibido
+      const app = document.querySelector("#app");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Limpa o conteúdo anterior (se houver)
+        app.innerHTML = "";
+
+        // Captura os vetores digitados pelo usuário e os transforma em arrays de números
+        const vetorA = document
+          .querySelector("#vetorA")
+          .value.split(",")
+          .map(Number);
+        const vetorB = document
+          .querySelector("#vetorB")
+          .value.split(",")
+          .map(Number);
+
+        // Verifica se os vetores possuem 3 elementos cada e se todos são números válidos
+        if (
+          vetorA.length !== 3 ||
+          vetorB.length !== 3 ||
+          vetorA.some(isNaN) ||
+          vetorB.some(isNaN)
+        ) {
+          app.textContent =
+            "Por favor, insira 3 números válidos para cada vetor.";
+          return;
+        }
+
+        // Funções para operações elemento a elemento
+        const somaVetores = (a, b) => a.map((number, i) => number + b[i]);
+        const subtraiVetores = (a, b) => a.map((number, i) => number - b[i]);
+        const multiplicaVetores = (a, b) => a.map((number, i) => number * b[i]);
+
+        // Calcula os vetores D, E e F
+        const vetorD = somaVetores(vetorA, vetorB);
+        const vetorE = subtraiVetores(vetorA, vetorB);
+        const vetorF = multiplicaVetores(vetorA, vetorB);
+
+        // Exibe os resultados na tela
+        app.innerHTML = `
+                <p><strong>Vetor A:</strong> [${vetorA.join(", ")}]</p>
+                <p><strong>Vetor B:</strong> [${vetorB.join(", ")}]</p>
+                <p><strong>Vetor D (A + B):</strong> [${vetorD.join(", ")}]</p>
+                <p><strong>Vetor E (A - B):</strong> [${vetorE.join(", ")}]</p>
+                <p><strong>Vetor F (A * B):</strong> [${vetorF.join(", ")}]</p>
+            `;
+      });
+    </script>
+  </body>
+</html>
